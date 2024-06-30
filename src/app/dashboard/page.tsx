@@ -2,6 +2,7 @@ import React from 'react'
 import { CardOverview } from './_components/CardOverview'
 import CardTransactions from './_components/CardTransactions'
 import { CoinsIcon, ShoppingBagIcon, UtensilsCrossedIcon } from 'lucide-react'
+import ChartDashboard from './_components/Chart'
 
 function Page() {
   const list = [
@@ -45,10 +46,15 @@ function Page() {
   ]
 
   return (
-    <section className="w-full px-7 py-5 h-auto">
-      <div className="w-1/4 flex flex-col gap-4">
+    <section className="w-full md:flex max-lg:flex-col gap-4 px-7 py-5 h-auto">
+      <div className="max-lg:w-full w-1/4 min-h-min flex flex-col gap-4">
         <CardOverview list={list} />
         <CardTransactions list={listTransictionsFake} />
+      </div>
+      <div className="w-full border rounded-lg lg:flex">
+        {/* Gastos mensais gráfico */}
+        <ChartDashboard type="bar" />
+        <ChartDashboard type="line" />
       </div>
     </section>
   )
