@@ -8,12 +8,10 @@ interface Props {
 
 export default function Layout({ children }: Props) {
   return (
-    <>
+    <div className="h-screen flex flex-col">
       <Header />
-      <main className="h-full flex flex-col items-center justify-between">
-        {children}
-      </main>
+      <main className="flex-1 overflow-y-auto w-full">{children}</main>
       <FooterNavigation />
-    </>
+    </div>
   )
 }
