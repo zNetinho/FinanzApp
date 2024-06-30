@@ -22,7 +22,7 @@ type FooterNavigationIcons = {
 const mockIconsMenu = [
   {
     icon: <HouseIcon />,
-    href: "/#",
+    href: "/dashboard",
     anchor: "Home"
   },
   {
