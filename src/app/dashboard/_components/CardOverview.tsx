@@ -5,9 +5,9 @@ import {
   CardDescription,
   CardHeader,
   CardTitle,
-} from "./card";
+} from "@/components/ui/card";
 import { cn } from "@/lib/utils";
-import { Button } from "./button";
+import { Button } from "@/components/ui/button";
 import { formatterCurrencyMoney } from "@/lib/formatterCurrency";
 
 type Props<T = unknown> = {
@@ -66,9 +66,9 @@ type OverviewProps = {
 
 function CardOverview({list}: MockPropsOverview) {
   return (
-    <Card className="w-1/5">
+    <Card>
       <HeaderCard className="flex flex-row gap-10 items-center justify-around">
-        <TitleCard className="text-lg">
+        <TitleCard className="text-base">
           Overview
         </TitleCard>
         <Button 
@@ -90,4 +90,4 @@ function CardOverview({list}: MockPropsOverview) {
   );
 }
 
-export default CardOverview;
+export { CardOverview, HeaderCard, ContentCard, TitleCard, DescriptionCard };
