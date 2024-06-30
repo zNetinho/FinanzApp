@@ -1,87 +1,70 @@
-import { cn } from "@/lib/utils";
 import {
   BarChartIcon,
   HouseIcon,
   SettingsIcon,
   WalletMinimalIcon,
-} from "lucide-react";
-import React from "react";
-import LinkComponent from "./ui/LinkComponent";
+} from 'lucide-react'
+import React from 'react'
+import LinkComponent from './ui/LinkComponent'
 
 type FooterNavigationProps<T = unknown> = {
-  children?: React.ReactNode;
-  className?: string;
-} & T;
-
-type FooterNavigationIcons = {
-  icon: React.ReactNode;
-  href: string;
-  anchor: string
-};
+  children?: React.ReactNode
+  className?: string
+} & T
 
 const mockIconsMenu = [
   {
     icon: <HouseIcon />,
-    href: "/dashboard",
-    anchor: "Home"
+    href: '/dashboard',
+    anchor: 'Home',
   },
   {
     icon: <WalletMinimalIcon />,
-    href: "/#",
-    anchor: "Accounts"
+    href: '/#',
+    anchor: 'Accounts',
   },
   {
     icon: <BarChartIcon />,
-    href: "/#",
-    anchor: "Analytics"
+    href: '/#',
+    anchor: 'Analytics',
   },
   {
     icon: <SettingsIcon />,
-    href: "/#",
-    anchor: "Settings"
+    href: '/#',
+    anchor: 'Settings',
   },
-];
+]
 
-function FooterIcon(
-  { children }: FooterNavigationProps,
-) {
-  return (
-    <>
-      {children}
-    </>
-  );
+function FooterIcon({ children }: FooterNavigationProps) {
+  return <>{children}</>
 }
 
 function FooterNavigationLinks() {
   return (
     <div>
       <ul className="flex justify-around w-screen h-auto">
-        {
-          mockIconsMenu.map((icon, index) => (
-            <li key={index} className="">
-                <LinkComponent
-                  href={icon.href}
-                  className="flex flex-col items-center justify-center text-default-dark hover:text-primary"
-                >
-                  <FooterIcon>
-                    {icon.icon}
-                  </FooterIcon>
-                  {icon.anchor}
-                </LinkComponent>
-            </li>
-          ))
-        }
+        {mockIconsMenu.map((icon, index) => (
+          <li key={index} className="">
+            <LinkComponent
+              href={icon.href}
+              className="flex flex-col items-center justify-center text-default-dark hover:text-primary"
+            >
+              <FooterIcon>{icon.icon}</FooterIcon>
+              {icon.anchor}
+            </LinkComponent>
+          </li>
+        ))}
       </ul>
     </div>
   )
-};
+}
 
 function FooterNavigation() {
   return (
-    <footer className="border-t absolute bottom-0 py-4">
+    <footer className="border-t sticky bottom-0 py-4 bg-white">
       <FooterNavigationLinks />
     </footer>
-  );
+  )
 }
 
-export { FooterIcon, FooterNavigation };
+export { FooterIcon, FooterNavigation }

@@ -10,7 +10,7 @@ export default function Layout({ children }: Props) {
   return (
     <>
       <Header />
-      <main className="flex h-auto flex-col items-center justify-between">
+      <main className="h-full flex flex-col items-center justify-between">
         {children}
       </main>
       <FooterNavigation />
