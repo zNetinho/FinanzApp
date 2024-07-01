@@ -1,6 +1,6 @@
 import React from 'react'
 import { CardOverview } from './_components/CardOverview'
-import CardTransactions from './_components/CardTransactions'
+import CardTransactions from './_components/transactions/CardTransactions'
 import { CoinsIcon, ShoppingBagIcon, UtensilsCrossedIcon } from 'lucide-react'
 import ChartDashboard from './_components/Chart'
 
