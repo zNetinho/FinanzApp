@@ -62,7 +62,7 @@ function CardOverview({ list }: MockPropsOverview) {
               VIEW ALL
             </Button>
           </PopoverTrigger>
-          <PopoverContent className="w-80">
+          <PopoverContent className="w-80 drop-shadow-md">
             <FormTransactions />
             {/* <div className="grid gap-4">
               <div className="space-y-2">
