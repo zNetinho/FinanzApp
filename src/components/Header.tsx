@@ -1,5 +1,7 @@
 'use client'
 
+'use client'
+
 import React from 'react'
 import Logo from './ui/Logo'
 import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar'
@@ -24,6 +26,14 @@ function Header() {
           <Logo />
         </div>
         <div className="flex gap-4 items-center">
+          <div className="px-4">
+            {session?.user && (
+              <h2 className="text-sm font-medium">
+                {' '}
+                Hi!, {session?.user.name}
+              </h2>
+            )}
+          </div>
           <div className="px-4">
             {session?.user && (
               <h2 className="text-sm font-medium">
