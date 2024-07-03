@@ -4,10 +4,9 @@ import {
   NextApiResponse,
 } from 'next'
 import { getServerSession, NextAuthOptions } from 'next-auth'
-
 import GoogleProvider from 'next-auth/providers/google'
 
-export const config: NextAuthOptions = {
+export const config = {
   providers: [
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID || '',
@@ -30,6 +29,7 @@ export const config: NextAuthOptions = {
         token.email = userCustom.email
         token.name = userCustom.name
         token.avatar = userCustom.avatar
+        return token
       }
       return token
     },
@@ -44,14 +44,19 @@ export const config: NextAuthOptions = {
         },
       }
     },
+    async signIn() {
+      const isAllowedToSignIn = true
+      if (isAllowedToSignIn) {
+        return true
+      } else {
+        return false
+      }
+    },
     async redirect({ url, baseUrl }) {
       if (url.startsWith('/')) return `${baseUrl}${url}`
       else if (new URL(url).origin === baseUrl) return url
       return baseUrl
     },
-  },
-  pages: {
-    signIn: '/dashboard',
   },
 } satisfies NextAuthOptions
 

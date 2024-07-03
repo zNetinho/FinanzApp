@@ -16,12 +16,12 @@ export default function DashboardLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
-      <body className="h-screen">
+    <>
+      <main className="h-screen">
         <AuthProvider>
           <Layout>{children}</Layout>
         </AuthProvider>
-      </body>
-    </html>
+      </main>
+    </>
   )
 }

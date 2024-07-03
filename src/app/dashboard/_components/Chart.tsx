@@ -58,9 +58,7 @@ function ChartDashboard({ type }: ChartDashBoardProps) {
     <div className="p-4 lg:w-full">
       <Card className="w-full">
         <HeaderCard>
-          <TitleCard className="text-2xl">
-            <h3>Gastos mensais</h3>
-          </TitleCard>
+          <TitleCard className="text-2xl">Gastos mensais</TitleCard>
         </HeaderCard>
         <ContentCard className="w-full">
           <Chart
