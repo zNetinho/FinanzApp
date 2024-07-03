@@ -49,6 +49,7 @@ function Header() {
             </PopoverTrigger>
             <PopoverContent className="w-96 relative right-5">
               {/* [] TODO: Criar menu usuário */}
+
               <Button onClick={handleSignout}>Sair</Button>
             </PopoverContent>
           </Popover>

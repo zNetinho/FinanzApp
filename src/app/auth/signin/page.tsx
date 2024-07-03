@@ -1,5 +1,4 @@
 'use client'
-
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader } from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
@@ -8,6 +7,7 @@ import { ChromeIcon, FacebookIcon, TwitterIcon } from 'lucide-react'
 import { signIn, useSession } from 'next-auth/react'
 import Link from 'next/link'
 import { redirect } from 'next/navigation'
+
 
 const handleSignin = (e) => {
   e.preventDefault()
