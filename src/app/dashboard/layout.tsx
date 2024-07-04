@@ -1,4 +1,5 @@
 import Layout from '@/components/Layout'
+import { ThemeProvider } from '@/components/theme-provider'
 import { AuthProvider } from '@/providers/Auth'
 import { Metadata } from 'next'
 
@@ -16,12 +17,19 @@ export default function DashboardLayout({
   children: React.ReactNode
 }) {
   return (
-    <>
-      <main className="h-screen">
-        <AuthProvider>
-          <Layout>{children}</Layout>
-        </AuthProvider>
-      </main>
-    </>
+    <html lang="en">
+      <body className="h-screen">
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <AuthProvider>
+            <Layout>{children}</Layout>
+          </AuthProvider>
+        </ThemeProvider>
+      </body>
+    </html>
   )
 }

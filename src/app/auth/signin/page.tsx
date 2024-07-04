@@ -9,9 +9,14 @@ import { signIn, useSession } from 'next-auth/react'
 import Link from 'next/link'
 import { redirect } from 'next/navigation'
 
-const handleSignin = (e) => {
+const handleSignin = (e: { preventDefault: () => void }) => {
   e.preventDefault()
   signIn()
+}
+
+const handleSignout = (e: { preventDefault: () => void }) => {
+  e.preventDefault()
+  signOut()
 }
 
 export default function Login() {

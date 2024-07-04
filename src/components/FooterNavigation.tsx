@@ -47,7 +47,7 @@ function FooterNavigationLinks() {
           <li key={index} className="">
             <LinkComponent
               href={icon.href}
-              className="flex flex-col items-center justify-center text-default-dark hover:text-primary"
+              className="flex flex-col items-center justify-center text-default-dark hover:text-primary dark:text-white dark:hover:text-slate-400"
             >
               <FooterIcon>{icon.icon}</FooterIcon>
               {icon.anchor}
@@ -61,7 +61,7 @@ function FooterNavigationLinks() {
 
 function FooterNavigation() {
   return (
-    <footer className="border-t sticky bottom-0 py-4 bg-white">
+    <footer className="border-t sticky bottom-0 py-4 bg-white dark:bg-slate-800">
       <FooterNavigationLinks />
     </footer>
   )
