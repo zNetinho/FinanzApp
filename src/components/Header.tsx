@@ -1,17 +1,21 @@
 'use client'
 
+'use client'
+
 import React from 'react'
 import Logo from './ui/Logo'
 import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar'
 import { SearchIcon } from 'lucide-react'
-import { useSession } from 'next-auth/react'
+import { signOut, useSession } from 'next-auth/react'
 import { Popover, PopoverContent, PopoverTrigger } from './ui/popover'
-import MenuUser from './MenuUser'
+import { Button } from './ui/button'
 
-type User = {
-  name: string | null | undefined
-  email: string | null | undefined
-  avatar: string | null | undefined
+const handleSignout = (e: { preventDefault: () => void }) => {
+  e.preventDefault()
+  signOut({
+    callbackUrl: '/auth/signin',
+  })
+
 }
 
 function Header() {
