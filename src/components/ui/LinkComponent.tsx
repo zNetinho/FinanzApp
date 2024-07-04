@@ -1,15 +1,15 @@
-import { cn } from '@/lib/utils';
-import Link from 'next/link';
+import { cn } from '@/lib/utils'
+import Link from 'next/link'
 import React from 'react'
 
 type Props = {
-  className?: string;
-  href: string;
-  anchor?: string;
+  className?: string
+  href: string
+  anchor?: string
   /**
    * default = ""
    */
-  rel?: string;
+  rel?: string
   /**
    * default = "_self"
    */
@@ -17,22 +17,14 @@ type Props = {
   children?: React.ReactNode
 }
 
-function LinkComponent({children, className, href, anchor, rel, target}: Props) {
-
+function LinkComponent({ children, className, href, rel, target }: Props) {
   if (children) {
     return (
-      <Link
-        href={href}
-        target={target}
-        rel={rel}
-        className={cn('', className)}
-      >
-        { children }
+      <Link href={href} target={target} rel={rel} className={cn('', className)}>
+        {children}
       </Link>
     )
   }
-
-  return
 }
 
 export default LinkComponent

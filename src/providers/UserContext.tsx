@@ -22,7 +22,7 @@ type AuthContextType = {
 // tipar o contexto 'as'
 export const UserContext = createContext({} as AuthContextType)
 
-export const UserProvider = ({ children }: any) => {
+export const UserProvider = ({ children }: ) => {
   const { user } = useContext(UserContext)
   // const [user, setUser] = useState(null);
   const isAuthenticated = !!user

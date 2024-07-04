@@ -1,10 +1,6 @@
 import React from 'react'
 
-interface Props {}
-
-function Logo(props: Props) {
-  const {} = props
-
+function Logo() {
   return (
     <div className="flex gap-2 justify-center items-center">
       <svg

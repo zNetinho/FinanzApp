@@ -2,11 +2,11 @@
 
 import { useSession, signIn, signOut } from 'next-auth/react'
 
-const handleSignin = (e) => {
+const handleSignin = (e: { preventDefault: () => void }) => {
   e.preventDefault()
   signIn()
 }
-const handleSignout = (e) => {
+const handleSignout = (e: { preventDefault: () => void }) => {
   e.preventDefault()
   signOut()
 }
