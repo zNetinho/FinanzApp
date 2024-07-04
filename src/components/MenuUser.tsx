@@ -1,8 +1,8 @@
-import React from 'react'
-import { Card, CardContent, CardFooter, CardHeader } from './ui/card'
 import { Separator } from '@radix-ui/react-separator'
 import { PiggyBank, User, WalletMinimalIcon } from 'lucide-react'
 import { useSession } from 'next-auth/react'
+import React from 'react'
+import { Card, CardFooter, CardHeader } from './ui/card'
 import { ModeToggle } from './ui/toggle-darkmode'
 
 type itemMenu = {

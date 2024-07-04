@@ -1,45 +1,45 @@
-'use client'
-import { createContext, useContext, useEffect } from 'react'
-type User = {
-  nome: string
-  email: string
-  avatar: string
-}
-
-// type SignInData = {
+// 'use client'
+// import { createContext, useContext, useEffect } from 'react'
+// type User = {
+//   nome: string
 //   email: string
-//   password: string
+//   avatar: string
 // }
 
-type AuthContextType = {
-  user: User | null
-  // signInAccount: (data: SignInData) => Promise<void>
-  // setUser: SetStateAction<any>,
-  isAuthenticated: boolean
-  handleLogout: () => void
-}
+// // type SignInData = {
+// //   email: string
+// //   password: string
+// // }
 
-// tipar o contexto 'as'
-export const UserContext = createContext({} as AuthContextType)
+// type AuthContextType = {
+//   user: User | null
+//   // signInAccount: (data: SignInData) => Promise<void>
+//   // setUser: SetStateAction<any>,
+//   isAuthenticated: boolean
+//   handleLogout: () => void
+// }
 
-export const UserProvider = ({ children }: ) => {
-  const { user } = useContext(UserContext)
-  // const [user, setUser] = useState(null);
-  const isAuthenticated = !!user
+// // @typescript-eslint/no-explicit-any
+// export const UserContext = createContext({} as AuthContextType)
 
-  useEffect(() => {
-    console.log(user)
-  }, [user])
+// export const UserProvider = ({ children }: any) => {
+//   const { user } = useContext(UserContext)
+//   // const [user, setUser] = useState(null);
+//   const isAuthenticated = !!user
 
-  const handleLogout = () => {
-    window.sessionStorage.removeItem('token_jwt')
-    // setUser(null);
-  }
+//   useEffect(() => {
+//     console.log(user)
+//   }, [user])
 
-  return (
-    <UserContext.Provider value={{ user, isAuthenticated, handleLogout }}>
-      {children}
-    </UserContext.Provider>
-  )
-}
-// receber token da função login, e definir usuario buscando no backend as informações
+//   const handleLogout = () => {
+//     window.sessionStorage.removeItem('token_jwt')
+//     // setUser(null);
+//   }
+
+//   return (
+//     <UserContext.Provider value={{ user, isAuthenticated, handleLogout }}>
+//       {children}
+//     </UserContext.Provider>
+//   )
+// }
+// // receber token da função login, e definir usuario buscando no backend as informações
