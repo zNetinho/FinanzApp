@@ -62,7 +62,7 @@ function ChartDashboard({ type }: ChartDashBoardProps) {
             <h3>Gastos mensais</h3>
           </TitleCard>
         </HeaderCard>
-        <ContentCard className="w-full">
+        <ContentCard className="w-full dark:text-white">
           <Chart
             options={state.options}
             series={state.series}

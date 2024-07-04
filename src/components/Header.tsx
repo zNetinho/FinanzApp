@@ -6,12 +6,13 @@ import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar'
 import { SearchIcon } from 'lucide-react'
 import { useSession } from 'next-auth/react'
 import { Popover, PopoverContent, PopoverTrigger } from './ui/popover'
+import MenuUser from './MenuUser'
 
 function Header() {
   const { data: session } = useSession()
   console.log(session)
   return (
-    <header className="w-screen h-auto px-8 py-4 border-b drop-shadow-sm bg-white sticky top-0">
+    <header className="w-screen h-auto px-8 py-4 border-b drop-shadow-sm bg-white dark:bg-slate-800 sticky top-0">
       <div className="flex justify-between">
         <div>
           <Logo />
@@ -40,8 +41,8 @@ function Header() {
                 <AvatarFallback>NF</AvatarFallback>
               </Avatar>
             </PopoverTrigger>
-            <PopoverContent className="w-96 relative right-5">
-              {/* [] TODO: Criar menu usuário */}
+            <PopoverContent className="w-80 relative right-5">
+              <MenuUser />
             </PopoverContent>
           </Popover>
         </div>
