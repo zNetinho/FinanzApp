@@ -1,7 +1,10 @@
+'use client'
 import React from 'react'
 import Header from './Header'
 import { FooterNavigation } from './FooterNavigation'
 import { Toaster } from './ui/toaster'
+import { useSession } from 'next-auth/react'
+import { redirect } from 'next/navigation'
 
 interface Props {
   children: React.ReactNode

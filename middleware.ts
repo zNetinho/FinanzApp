@@ -1,25 +1,39 @@
+/* eslint-disable react-hooks/rules-of-hooks */
+import { NextRequestWithAuth, withAuth } from 'next-auth/middleware'
+import { signOut } from 'next-auth/react'
 import { NextResponse } from 'next/server'
-import {
-  withAuth,
-  NextRequestWithAuth,
-  NextAuthMiddlewareOptions,
-} from 'next-auth/middleware'
 
-const middleware = (request: NextRequestWithAuth) => {
+const middleware = async (request: NextRequestWithAuth) => {
   console.log('[MIDDLEWARE_NEXTAUTH_TOKEN]: ', request.nextauth.token)
 
-  const isPrivateRoutes = request.nextUrl.pathname.startsWith('/')
-  // const isAdminUser = request.nextauth.token?.role === "admin";
+  const isPrivateRoutes = request.nextUrl.pathname.startsWith('/dashboard')
 
   if (isPrivateRoutes) {
-    return NextResponse.rewrite(new URL('/signin', request.url))
+    return NextResponse.rewrite(new URL('/auth/signin', request.url))
+  }
+
+  if (request.nextUrl.pathname === '/logout') {
+    await signOut()
+    return NextResponse.redirect(new URL('/auth/signin', request.url))
   }
 }
 
-const callbackOptions: NextAuthMiddlewareOptions = {}
+// const callbackOptions: NextAuthMiddlewareOptions = {
+//   callbacks: {
+//     authorized({ req, token }) {
+//       if (token) return true // If there is a token, the user is authenticated
+//     },
+//   },
+//   secret: process.env.NEXTAUTH_SECRET,
+//   pages: {},
+// }
 
-export default withAuth(middleware, callbackOptions)
+export default withAuth(middleware)
 
 export const config = {
-  matcher: '/',
+  matcher: ['/dashboard'],
+  pages: {
+    signIn: '/auth/login',
+  },
+  secret: process.env.NEXTAUTH_SECRET,
 }
