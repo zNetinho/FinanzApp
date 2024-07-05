@@ -11,14 +11,20 @@ interface Props {
 }
 
 export default function Layout({ children }: Props) {
+  const { data: session } = useSession();
+
+  if( session === null ) {
+    redirect('/auth/signin')
+  }
+
   return (
-    <div className="h-screen flex flex-col">
-      <Header />
-      <main className="flex-1 overflow-y-auto w-full">
-        {children}
-        <Toaster />
-      </main>
-      <FooterNavigation />
-    </div>
+      <div className="h-screen flex flex-col">
+        <Header />
+        <div className="flex-1 overflow-y-auto w-full dark:bg-primary-main">
+          {children}
+          <Toaster />
+        </div>
+        <FooterNavigation />
+      </div>
   )
 }

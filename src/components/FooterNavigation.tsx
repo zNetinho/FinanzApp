@@ -61,7 +61,7 @@ function FooterNavigationLinks() {
 
 function FooterNavigation() {
   return (
-    <footer className="border-t sticky bottom-0 py-4 bg-white dark:bg-slate-800">
+    <footer className="border-t sticky bottom-0 py-4 bg-white dark:bg-primary-main">
       <FooterNavigationLinks />
     </footer>
   )

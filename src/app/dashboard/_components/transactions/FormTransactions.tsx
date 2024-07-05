@@ -60,13 +60,13 @@ export function FormTransactions() {
   }
 
   return (
-    <div>
-      <h4 className="text-center pb-4 text-base font-medium text-text-primary">
+    <div className="dark:bg-paper-dark">
+      <h4 className="text-center pb-4 text-base font-medium text-text-primary dark:text-text-primary-dark">
         Adicione o registro
       </h4>
       <form onSubmit={handleSubmit(onSubmit)} className="w-full space-y-6">
         <div>
-          <Label htmlFor="purchase">Purchase</Label>
+          <Label htmlFor="purchase" className="text-text-primary dark:text-text-primary-dark">Purchase</Label>
           <Input
             type="text"
             id="purchase"
@@ -79,7 +79,7 @@ export function FormTransactions() {
           )}
         </div>
         <div>
-          <Label htmlFor="value_purchase">Value of purchase</Label>
+          <Label htmlFor="value_purchase" className="text-text-primary dark:text-text-primary-dark">Value of purchase</Label>
           <Input
             type="number"
             id="value_purchase"
@@ -93,7 +93,7 @@ export function FormTransactions() {
           )}
         </div>
         <div>
-          <Label htmlFor="date_purchase">Date of purchase</Label>
+          <Label htmlFor="date_purchase" className="text-text-primary dark:text-text-primary-dark">Date of purchase</Label>
           <Input
             type="number"
             id="date_purchase"
@@ -105,7 +105,7 @@ export function FormTransactions() {
           )}
         </div>
         <div className="flex w-full justify-center items-center">
-          <Button type="submit">Submit</Button>
+          <Button type="submit" variant="secondary">Submit</Button>
         </div>
       </form>
     </div>

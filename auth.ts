@@ -20,7 +20,7 @@ export const config = {
           id?: string
           email?: string
           name?: string
-          avatar?: string
+          avatar: string
           token?: string
         }
 
@@ -36,12 +36,6 @@ export const config = {
     session: async ({ session, token }) => {
       return {
         ...session,
-        user: {
-          email: token.email,
-          name: token.name,
-          avatar: token.picture,
-          token,
-        },
       }
     },
     async signIn() {

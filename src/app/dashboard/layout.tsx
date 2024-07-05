@@ -17,8 +17,8 @@ export default function DashboardLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
-      <body className="h-screen">
+    // <html lang="en" suppressHydrationWarning>
+    //   <body className="h-screen">
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
@@ -29,7 +29,7 @@ export default function DashboardLayout({
             <Layout>{children}</Layout>
           </AuthProvider>
         </ThemeProvider>
-      </body>
-    </html>
+    //   </body>
+    // </html>
   )
 }

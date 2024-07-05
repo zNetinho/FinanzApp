@@ -53,24 +53,17 @@ type MockPropsOverview = {
 
 function CardOverview({ list }: MockPropsOverview) {
   return (
-    <Card>
+    <Card className='dark:bg-paper-dark'>
       <HeaderCard className="flex flex-row gap-10 items-center justify-around">
         <TitleCard className="text-base">Overview</TitleCard>
-        <Popover>
-          <PopoverTrigger asChild>
             <Button variant="outline" className="border">
               VIEW ALL
             </Button>
-          </PopoverTrigger>
-          <PopoverContent className="w-80 drop-shadow-md">
-            <FormTransactions />
-          </PopoverContent>
-        </Popover>
       </HeaderCard>
       <ContentCard className="flex flex-wrap gap-6">
         {list.map((e, index) => (
           <div key={index} className="flex flex-col flex-shrink">
-            <span className="text-xs text-default-dark">{e.category}</span>
+            <span className="text-xs text-default-dark dark:text-white">{e.category}</span>
             <p className="text-lg font-medium">
               {formatterCurrencyMoney.format(e.total_amount)}
             </p>

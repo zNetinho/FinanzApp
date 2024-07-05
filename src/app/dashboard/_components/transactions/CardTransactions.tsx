@@ -3,6 +3,8 @@ import React from 'react'
 import { ContentCard, HeaderCard, TitleCard } from '../CardOverview'
 import { Button } from '@/components/ui/button'
 import { formatterCurrencyMoney } from '@/lib/formatterCurrency'
+import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover'
+import { FormTransactions } from './FormTransactions'
 
 export type CardTransictions = {
   icon: React.ReactNode
@@ -17,10 +19,17 @@ export type ListCardTransictions = {
 
 function CardTransactions({ list }: ListCardTransictions) {
   return (
-    <Card>
+    <Card className='dark:bg-paper-dark'>
       <HeaderCard className="flex flex-row gap-10 items-center justify-around">
         <TitleCard className="text-base">Transactions</TitleCard>
-        <Button variant="outline">Add Transaction</Button>
+        <Popover>
+          <PopoverTrigger asChild>
+            <Button variant="outline">Add Transaction</Button>
+          </PopoverTrigger>
+          <PopoverContent className="bg-paper-dark">
+            <FormTransactions />
+          </PopoverContent>
+        </Popover>  
       </HeaderCard>
       <ContentCard>
         <ul>
@@ -29,7 +38,7 @@ function CardTransactions({ list }: ListCardTransictions) {
               <div className="flex items-center gap-2">
                 <span>{e.icon}</span>
                 <div className="flex flex-col py-2">
-                  <span className="p-0">{e.namePurchase}</span>
+                  <span className="p-0 dark:text-white">{e.namePurchase}</span>
                   <span className="text-xs text-default-dark">
                     {e.datePurchase}
                   </span>

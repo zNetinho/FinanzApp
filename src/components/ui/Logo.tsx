@@ -4,7 +4,7 @@ function Logo() {
   return (
     <div className="flex gap-2 justify-center items-center">
       <svg
-        fill="#000000"
+        fill="#2ecc71"
         version="1.1"
         id="Capa_1"
         xmlns="http://www.w3.org/2000/svg"

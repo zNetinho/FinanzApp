@@ -18,18 +18,19 @@ export const config: NextAuthOptions = {
     jwt: ({ token, user }) => {
       if (user) {
         const userCustom = user as {
-          id?: string
-          email?: string
-          name?: string
-          avatar?: string
-          token?: string
+          id: string
+          email: string
+          name: string
+          image: string
+          token: string
         }
 
         // Adicione as propriedades desejadas ao token
         token.token = userCustom.token
         token.email = userCustom.email
         token.name = userCustom.name
-        token.avatar = userCustom.avatar
+        token.avatar = userCustom.image
+        return userCustom
       }
       return token
     },
@@ -39,7 +40,7 @@ export const config: NextAuthOptions = {
         user: {
           email: token.email,
           name: token.name,
-          avatar: token.picture,
+          image: token.picture,
           token,
         },
       }
@@ -51,7 +52,7 @@ export const config: NextAuthOptions = {
     },
   },
   pages: {
-    signIn: '/dashboard',
+    // signIn: '/auth',
   },
 } satisfies NextAuthOptions
 
