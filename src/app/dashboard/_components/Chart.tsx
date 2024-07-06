@@ -3,6 +3,7 @@ import React from 'react'
 import Chart from 'react-apexcharts'
 import { ContentCard, HeaderCard, TitleCard } from './CardOverview'
 import { Card } from '@/components/ui/card'
+import dynamic from 'next/dynamic'
 
 type ChartTypes =
   | 'line'
@@ -21,17 +22,51 @@ type ChartTypes =
   | 'rangeBar'
   | 'rangeArea'
   | 'treemap'
-  | undefined
+  | undefined;
 
 type ChartDashBoardProps = {
-  type: ChartTypes
-}
+  type: ChartTypes;
+};
+
+const ChartDash = dynamic(() => import('react-apexcharts'), { ssr: false });
 
 function ChartDashboard({ type }: ChartDashBoardProps) {
   const state = {
     options: {
       chart: {
         id: 'basic-bar',
+      },
+      tooltip: {
+        enabled: true,
+        enabledOnSeries: undefined,
+        shared: true,
+        followCursor: false,
+        intersect: false,
+        inverseOrder: false,
+        custom: undefined,
+        hideEmptySeries: true,
+        fillSeriesColor: false,
+        theme: 'dark',
+        style: {
+          fontSize: '12px',
+          fontFamily: undefined,
+          backgroundColor: ["#7D7C7C",]
+        },
+        onDatasetHover: {
+            highlightDataSeries: false,
+        },
+        marker: {
+            show: true,
+        },
+        items: {
+           display: 'flex',
+        },
+        fixed: {
+            enabled: false,
+            position: 'topRight',
+            offsetX: 0,
+            offsetY: 0,
+        },
       },
       xaxis: {
         categories: [
@@ -44,6 +79,24 @@ function ChartDashboard({ type }: ChartDashBoardProps) {
           'Agosto',
           'Setembro',
         ],
+        labels: {
+          style: {
+            colors: '#000000', // Define a cor das legendas
+            fontSize: '12px',
+            fontWeight: 'bold'
+          }
+      },
+      },
+      colors: ["#000000"], // Define as cores do gráfico (linhas ou barras)
+      yaxis: {
+        labels: {
+          style: {
+            fontSize: '14px',
+            fontFamily: 'Helvetica, Arial, sans-serif',
+            fontWeight: 'bold',
+            colors: '#000000', // Define a cor dos valores do eixo y
+          },
+        },
       },
     },
     series: [
@@ -52,18 +105,16 @@ function ChartDashboard({ type }: ChartDashBoardProps) {
         data: [30, 40, 45, 50, 49, 60, 70, 91],
       },
     ],
-  }
+  };
 
   return (
-    <div className="p-4 lg:w-full">
-      <Card className="w-full">
+    <div className="px-4 lg:w-full ">
+      <Card className="w-full dark:bg-paper-dark">
         <HeaderCard>
-          <TitleCard className="text-2xl">
-            <h3>Gastos mensais</h3>
-          </TitleCard>
+          <TitleCard className="text-2xl dark:text-white">Gastos mensais</TitleCard>
         </HeaderCard>
         <ContentCard className="w-full">
-          <Chart
+          <ChartDash
             options={state.options}
             series={state.series}
             type={type}
@@ -73,7 +124,7 @@ function ChartDashboard({ type }: ChartDashBoardProps) {
         </ContentCard>
       </Card>
     </div>
-  )
+  );
 }
 
-export default ChartDashboard
+export default ChartDashboard;

@@ -1,31 +1,12 @@
-import { FooterNavigation } from "@/components/FooterNavigation";
-import Header from "@/components/Header";
-import CardOverview from "@/components/ui/CardOverview";
-import Image from "next/image";
-
-const list = [
-  {
-    category: "Incomes",
-    total_amount: 5234
-  },
-  {
-    category: "Balance",
-    total_amount: 123456
-  },
-  {
-    category: "Expenses",
-    total_amount: 2789
-  },
-  {
-    category: "Savings",
-    total_amount: 3456
-  },
-]
+'use client'
+import { useSession } from "next-auth/react";
+import { redirect } from "next/navigation";
 
 export default function Home() {
-  return (
-    <div>
-      
-    </div>
-  );
+  const { data: session } = useSession();
+  if( session === null ) {
+    return redirect('/auth/signin')
+  } else {
+    return redirect(`/dashboard`)
+  }
 }

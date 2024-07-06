@@ -1,6 +1,7 @@
+'use client'
 import React from 'react'
 import { CardOverview } from './_components/CardOverview'
-import CardTransactions from './_components/CardTransactions'
+import CardTransactions from './_components/transactions/CardTransactions'
 import { CoinsIcon, ShoppingBagIcon, UtensilsCrossedIcon } from 'lucide-react'
 import ChartDashboard from './_components/Chart'
 
@@ -51,10 +52,10 @@ function Page() {
         <CardOverview list={list} />
         <CardTransactions list={listTransictionsFake} />
       </div>
-      <div className="w-full border rounded-lg lg:flex">
+      <div className="w-full border-none rounded-lg lg:flex">
         {/* Gastos mensais gráfico */}
-        <ChartDashboard type="bar" />
-        <ChartDashboard type="line" />
+          <ChartDashboard type="bar" />
+          <ChartDashboard type="line" />
       </div>
     </section>
   )

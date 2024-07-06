@@ -1,4 +1,5 @@
-import React from 'react'
+'use client'
+import { Button } from '@/components/ui/button'
 import {
   Card,
   CardContent,
@@ -6,9 +7,15 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card'
-import { cn } from '@/lib/utils'
-import { Button } from '@/components/ui/button'
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from '@/components/ui/popover'
 import { formatterCurrencyMoney } from '@/lib/formatterCurrency'
+import { cn } from '@/lib/utils'
+import React from 'react'
+import { FormTransactions } from './transactions/FormTransactions'
 
 type Props<T = unknown> = {
   children: React.ReactNode
@@ -46,17 +53,17 @@ type MockPropsOverview = {
 
 function CardOverview({ list }: MockPropsOverview) {
   return (
-    <Card>
+    <Card className='dark:bg-paper-dark'>
       <HeaderCard className="flex flex-row gap-10 items-center justify-around">
         <TitleCard className="text-base">Overview</TitleCard>
-        <Button variant="outline" className="border">
-          VIEW ALL
-        </Button>
+            <Button variant="outline" className="border">
+              VIEW ALL
+            </Button>
       </HeaderCard>
       <ContentCard className="flex flex-wrap gap-6">
         {list.map((e, index) => (
           <div key={index} className="flex flex-col flex-shrink">
-            <span className="text-xs text-default-dark">{e.category}</span>
+            <span className="text-xs text-default-dark dark:text-white">{e.category}</span>
             <p className="text-lg font-medium">
               {formatterCurrencyMoney.format(e.total_amount)}
             </p>
@@ -67,4 +74,4 @@ function CardOverview({ list }: MockPropsOverview) {
   )
 }
 
-export { CardOverview, HeaderCard, ContentCard, TitleCard, DescriptionCard }
+export { CardOverview, ContentCard, DescriptionCard, HeaderCard, TitleCard }
