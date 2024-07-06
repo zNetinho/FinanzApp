@@ -1,8 +1,9 @@
-import React from 'react';
-import Chart from 'react-apexcharts';
-import { ContentCard, HeaderCard, TitleCard } from './CardOverview';
-import { Card } from '@/components/ui/card';
-import dynamic from 'next/dynamic';
+'use client'
+import React from 'react'
+import Chart from 'react-apexcharts'
+import { ContentCard, HeaderCard, TitleCard } from './CardOverview'
+import { Card } from '@/components/ui/card'
+import dynamic from 'next/dynamic'
 
 type ChartTypes =
   | 'line'
