@@ -37,7 +37,7 @@ function Header() {
                   <Avatar className="cursor-pointer">
                     <AvatarImage
                       src={
-                        avatarImg
+                        avatarImg ?? "https://source.boringavatars.com/marble/120"
                       }
                       alt="@shadcn"
                     ></AvatarImage>
