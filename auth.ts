@@ -5,37 +5,28 @@ import Google from './node_modules/@auth/core/providers/google';
 export const { handlers, signIn, signOut, auth } = NextAuth({
   providers: [Google, GitHub],
   callbacks: {
-    jwt: ({ token, session, user, profile  }) => {
-      console.log("Dados do jwt", profile)
-      if (session) {
-        console.log("Ebaa")
-        const userCustom = user as {
-          id?: string;
-          email?: string;
-          name?: string;
-          avatar?: string;
-          token?: string
-      };
-      // Adicione as propriedades desejadas ao token
-        token.email = userCustom.email;
-        token.name = userCustom.name;
-        token.picture = userCustom.avatar;
-        token.email = userCustom.email;
-        return token
+    jwt: ({ token, user, profile  }) => {
+      if (!profile) {
+        console.warn("Profile information not available from provider.");
+        return token; // Retorna o token sem alterações se o Provider não tiver 'profile'
       }
-      console.log("iiih")
-      return token
+
+      // Extraindo infos relevante do profile (customize para sua necessidade.)
+      const userCustom = {
+        id: user?.id || profile?.id,
+        email: profile?.email,
+        name: profile?.name,
+        avatar: profile?.image,
+        reposUrl: profile.repos_url
+      };
+
+      // Criando a propriedade user e devolvendo o token.
+      token.user = userCustom;
+      return token;
     },
-    session: async ({ session, token }) => {
-      // a sessão tá saindo daqui
-      console.log("Dados da session", token)
-      console.log(session)
+    session: async ({ session, token, user }) => {
       return {
         ...session,
-        user: {
-          name: session.user.name,
-          image: session.user.image
-        }
       }
     },
     async signIn() {
