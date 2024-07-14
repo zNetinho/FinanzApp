@@ -7,6 +7,6 @@ export default function Home() {
   if( session === null ) {
     return redirect('/auth/signin')
   } else {
-    return redirect(`/dashboard`)
+    return redirect(`/home`)
   }
 }

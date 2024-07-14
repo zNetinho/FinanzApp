@@ -15,7 +15,7 @@ type FooterNavigationProps<T = unknown> = {
 const mockIconsMenu = [
   {
     icon: <HouseIcon />,
-    href: '/dashboard',
+    href: '/home',
     anchor: 'Home',
   },
   {
@@ -25,7 +25,7 @@ const mockIconsMenu = [
   },
   {
     icon: <BarChartIcon />,
-    href: '/#',
+    href: '/dashboard',
     anchor: 'Analytics',
   },
   {
